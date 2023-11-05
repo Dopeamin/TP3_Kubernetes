@@ -14,9 +14,9 @@ spec:
     spec:
       containers:
         - name: nodejs-web-app
-          image: yourusername/nodejs-web-app:latest
+          image: dopeamin/tp3:latest
           ports:
-            - containerPort: 8080
+            - containerPort: 8081
           resources:
             requests:
               memory: "64Mi"

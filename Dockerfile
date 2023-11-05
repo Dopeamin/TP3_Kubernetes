@@ -3,7 +3,7 @@
 FROM node:16-slim
 
 # Create and change to the app directory.
-WORKDIR /usr/src/app
+WORKDIR /Users/amine/Documents/work/kubernetes-tp
 
 # Copy application dependency manifests to the container image.
 # A wildcard is used to ensure both package.json AND package-lock.json are copied.
@@ -19,6 +19,7 @@ COPY . .
 # Expose port 8080 to the Docker host, so we can access it
 # from the outside.
 EXPOSE 8081
+EXPOSE 3000
 
 # Run the web service on container startup.
 CMD [ "node", "app.js" ]
