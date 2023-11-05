@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: nodejs-web-app-service
+  name: nodejs-web-app-service-test
 spec:
   selector:
-    app: nodejs-web-app
+    app: nodejs-web-app-test
   ports:
     - protocol: TCP
       port: 80
