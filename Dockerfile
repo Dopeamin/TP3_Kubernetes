@@ -22,4 +22,4 @@ EXPOSE 8081
 EXPOSE 3000
 
 # Run the web service on container startup.
-CMD [ "node", "app.js" ]
+CMD [ "node", "server.js" ]
