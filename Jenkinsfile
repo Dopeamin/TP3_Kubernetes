@@ -18,7 +18,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    DOCKER_IMAGE = docker.build('yourusername/yourapp:${GIT_COMMIT}')
+                    DOCKER_IMAGE = docker.build('dopeamin/tp3')
                 }
             }
         }
