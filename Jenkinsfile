@@ -16,7 +16,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    def imageNameWithTag = "$DOCKER_IMAGE:latest"
+                    def imageNameWithTag = "dopeamin/$DOCKER_IMAGE:latest"
                     docker.build(imageNameWithTag)
                 }
             }
