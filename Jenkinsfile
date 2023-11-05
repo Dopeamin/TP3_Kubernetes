@@ -2,8 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = ""
-        DOCKERHUB_CREDENTIALS = credentials('docker_account')
+        DOCKER_IMAGE = "tp_kubernetes"
         KUBECONFIG_CREDENTIALS = credentials('minikube-kubeconfig')
         PATH = "/usr/local/bin:$PATH"
     }
@@ -18,16 +17,18 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    DOCKER_IMAGE = docker.build('dopeamin/tp3')
+                    def imageNameWithTag = "$DOCKER_IMAGE:latest"
+                    docker.build(imageNameWithTag)
                 }
             }
         }
         
         stage('Push to DockerHub') {
             steps {
-                script {
-                    docker.withRegistry('https://registry.hub.docker.com', DOCKERHUB_CREDENTIALS) {
-                        DOCKER_IMAGE.push()
+                withCredentials([usernamePassword(credentialsId: 'docker-account', passwordVariable: 'DOCKERHUB_PASS', usernameVariable: 'DOCKERHUB_USER')]) {
+                    script {
+                        sh 'echo $DOCKERHUB_PASS | docker login --username $DOCKERHUB_USER --password-stdin'
+                        sh "docker push dopeamin/$DOCKER_IMAGE:latest"
                     }
                 }
             }

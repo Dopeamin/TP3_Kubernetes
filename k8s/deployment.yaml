@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: nodejs-web-app
-          image: dopeamin/tp3:latest
+          image: dopeamin/tp_kubernetes:latest
           ports:
             - containerPort: 8081
           resources:
