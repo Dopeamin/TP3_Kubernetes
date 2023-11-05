@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nodejs-web-app
+  name: nodejs-web-app-test
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: nodejs-web-app
+      app: nodejs-web-app-test
   template:
     metadata:
       labels:
-        app: nodejs-web-app
+        app: nodejs-web-app-test
     spec:
       containers:
-        - name: nodejs-web-app
+        - name: nodejs-web-app-test
           image: dopeamin/tp_kubernetes:latest
           ports:
             - containerPort: 8081
