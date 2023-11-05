@@ -18,7 +18,7 @@ COPY . .
 
 # Expose port 8080 to the Docker host, so we can access it
 # from the outside.
-EXPOSE 8080
+EXPOSE 8081
 
 # Run the web service on container startup.
 CMD [ "node", "app.js" ]
