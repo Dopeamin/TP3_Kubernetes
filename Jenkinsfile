@@ -3,7 +3,6 @@ pipeline {
 
     environment {
         DOCKER_IMAGE = "tp_kubernetes"
-        KUBECONFIG_CREDENTIALS = credentials('minikube-kubeconfig')
         PATH = "/usr/local/bin:$PATH"
     }
 
@@ -37,7 +36,7 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
                 script {
-                    withCredentials([file(credentialsId: KUBECONFIG_CREDENTIALS, variable: 'KUBECONFIG')]) {
+                    withCredentials([file(credentialsId: 'minikube-kubeconfig', variable: 'KUBECONFIG')]) {
                         sh 'kubectl apply -f k8s/deployment.yaml'
                         sh 'kubectl apply -f k8s/service.yaml'
                     }
